@@ -10,9 +10,12 @@ import java.util.Enumeration;
 import java.util.Iterator;
 import java.util.List;
 
+import Player.PlayerLocal;
+
 import edu.neumont.chessModel.Board.ChessBoard;
 import edu.neumont.chessModel.Board.ChessBoard.IListener;
 import edu.neumont.chessModel.Board.Location;
+import edu.neumont.chessModel.Board.Player;
 import edu.neumont.chessModel.Board.Team;
 import edu.neumont.chessModel.Interface.*;
 import edu.neumont.chessModel.Movement.Move;
@@ -29,7 +32,7 @@ public class GameController implements ChessBoardInterface, ICheckChecker, IList
 	private Team blackTeam;
 
 	private ChessBoard board;
-	private Team currentPlayer;
+	private Player currentPlayer;
 
 	private boolean isCheckmate;
 	private boolean isStalemate;
@@ -53,7 +56,7 @@ public class GameController implements ChessBoardInterface, ICheckChecker, IList
 		blackTeam = buildTeam(Team.Color.DARK, TeamType.SERVER);
 
 		// Determine the player types here
-		currentPlayer = whiteTeam;
+		currentPlayer = new PlayerLocal(whiteTeam);
 
 		isCheckmate = false;
 		isStalemate = false;
